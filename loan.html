@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>Ascend - Loan Request</title>
+<link rel="icon" type="image/x-icon" href="Ascend_Logo.jpeg">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="nav"><h2>Ascend</h2><a href="index.html">Back to Home</a></div>
+<div class="wrap">
+  <div id="loanBox">
+    <h1>Loan request</h1>
+    <p>Loan Apply ID: <b id="lid"></b></p>
+    <form id="loanForm">
+      <div class="f"><label>Loan amount (₹5,000 to ₹2,00,000)</label>
+      <input id="amt" type="number" min="5000" max="200000" required oninput="emi()"></div>
+      <div class="f"><label>Reason for the loan</label>
+      <select id="purpose" required><option value="">Select</option><option>Tuition fees</option><option>Laptop or equipment</option><option>Skill course</option><option>Rent or relocation</option><option>Business idea</option><option>Other</option></select></div>
+      <div class="f"><label>Repayment period</label>
+      <select id="ten" required onchange="emi()"><option value="">Select</option><option value="6">6 months</option><option value="12">12 months</option><option value="18">18 months</option><option value="24">24 months</option><option value="36">36 months</option></select></div>
+      <div class="f"><label>EMI option</label>
+      <select id="emiopt" required><option value="">Select</option><option>Auto-debit from bank</option><option>UPI mandate</option><option>Manual payment</option></select></div>
+      <div class="f"><label>Bank for disbursal</label>
+      <select id="bank" required><option value="">Select</option><option>SBI</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option><option>Punjab National Bank</option><option>Other</option></select></div>
+      <p id="emi"></p>
+      <button>Submit loan request</button>
+    </form>
+  </div>
+
+  <h2>Available loan options</h2>
+  <div class="card"><h3>Starter</h3><p>₹10,000 for 6 months at 12% a year</p><button onclick="pick(10000,6,12)">Choose</button></div>
+  <div class="card"><h3>Learner</h3><p>₹50,000 for 12 months at 13% a year</p><button onclick="pick(50000,12,13)">Choose</button></div>
+  <div class="card"><h3>Achiever</h3><p>₹1,50,000 for 24 months at 14% a year</p><button onclick="pick(150000,24,14)">Choose</button></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>Ascend - Owner Panel</title>
+<link rel="icon" type="image/x-icon" href="Ascend_Logo.jpeg">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="nav"><h2>Ascend Owner Panel</h2></div>
+<div class="wrap">
+  <div id="login">
+    <h2>Owner login</h2>
+    <input id="pw" type="password" placeholder="Password">
+    <button onclick="adminLogin()">Open</button>
+  </div>
+  <div id="adminBox" style="display:none">
+    <p id="status"></p>
+    <div class="card">
+      <b>Import files</b>
+      <p>Every loan request and review also downloads a .json file. Select those files here to add them to this list.</p>
+      <input id="imp" type="file" accept=".json" multiple>
+    </div>
+    <button class="no" onclick="clearAll()">Delete all test data</button>
+    <h2>Loan requests</h2>
+    <div id="reqs"></div>
+    <h2>Reviews</h2>
+    <p>Average rating: <b id="avg"></b> <span class="gold" id="avgStars"></span></p>
+    <div id="revList"></div>
+  </div>
+</div>
+</body>
+</html>

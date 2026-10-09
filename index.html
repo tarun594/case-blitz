@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>Ascend - Loans for Gen Z</title>
+<link rel="icon" type="image/x-icon" href="Ascend_Logo.jpeg">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="nav">
+  <h2>Ascend</h2>
+  <button onclick="show('home')">Home</button>
+  <button onclick="show('about')">About</button>
+  <button onclick="show('certificate')">Certificate</button>
+  <button onclick="show('apply')">Apply</button>
+  <button onclick="show('reviews')">Reviews</button>
+  <button onclick="show('loginPage')">Login</button>
+  <button onclick="show('contact')">Contact Us</button>
+</div>
+
+<div class="page" id="home">
+  <div class="hero">
+    <h1>Your first loan, without a credit history.</h1>
+    <p>Ascend gives loans to people aged 18 to 24 who are just starting out.</p>
+    <button onclick="show('apply')">Apply now</button>
+  </div>
+  <ul class="tags">
+    <li>No Misuse of Data</li>
+    <li>No Harassment History</li>
+    <li>No Hidden Charges</li>
+    <li>Verified by RBI</li>
+  </ul>
+</div>
+
+<div class="page" id="about">
+  <h1>About Ascend</h1>
+  <p>Sample text: Ascend helps young adults build a credit history with fair, transparent loans.</p>
+  <h3>How it works</h3>
+  <ul>
+    <li>Fill in the application form.</li>
+    <li>Choose the loan amount and EMI plan.</li>
+    <li>Get a decision by email.</li>
+  </ul>
+</div>
+
+<div class="page" id="certificate">
+  <div class="cert">
+    <p>Certificate of Verification</p>
+    <p>This is to certify that</p>
+    <h1>ASCEND</h1>
+    <p>has been verified by the <b>Reserve Bank of India</b> for lending to first-time borrowers.</p>
+    <div class="seal">RBI VERIFIED</div>
+    <p>Certificate No: RBI/0000/2026 (sample)</p>
+    <ul class="tags">
+      <li>No Misuse of Data</li>
+      <li>No Harassment History</li>
+      <li>No Hidden Charges</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page" id="apply">
+  <h1>Loan Eligibility Form</h1>
+  <form id="applyForm"></form>
+</div>
+
+<div class="page" id="reviews">
+  <h1>Reviews</h1>
+  <p>Average rating: <b id="avg"></b> <span class="gold" id="avgStars"></span></p>
+  <div class="card">
+    <h3>Write a review</h3>
+    <div id="starPick">
+      <span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span>
+    </div>
+    <input id="rname" type="text" placeholder="Your name">
+    <textarea id="rtext" rows="3" placeholder="Your comment"></textarea>
+    <button onclick="addReview()">Post Review</button>
+  </div>
+  <div id="revList"></div>
+</div>
+
+<div class="page" id="loginPage">
+  <h1>Login</h1>
+  <p>Log in with your Loan Apply ID and a one-time password (OTP).</p>
+  <div class="card">
+    <input id="lid2" type="text" maxlength="10" placeholder="10-digit Loan Apply ID">
+    <button onclick="sendOtp()">Send OTP</button>
+    <p id="otpNote"></p>
+    <div id="otpStep" style="display:none">
+      <input id="otp" type="text" maxlength="6" placeholder="Enter 6-digit OTP">
+      <button onclick="verifyOtp()">Verify and login</button>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="contact">
+  <h1>Contact Us</h1>
+  <p>Email: <a href="mailto:ascendcaseblitz@gmail.com">ascendcaseblitz@gmail.com</a></p>
+  <p>Phone: +91 98765 4XXXX</p>
+  <p>Instagram: <a href="https://www.instagram.com/ascendcaseblitz/#" target="_blank">Follow our page</a></p>
+</div>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h2>Check your details</h2>
+    <div id="sum"></div>
+    <button onclick="closeM()">Edit details</button>
+    <button onclick="finalSubmit()">Final submit</button>
+  </div>
+</div>
+
+</body>
+</html>
