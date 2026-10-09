@@ -54,11 +54,12 @@ if($('applyForm')){
   '<div id="job" style="display:none">'+f('jobtitle|Current Job Title|text|req')+f('income|Income per annum (₹)|number|inc')+'</div>'+
   '<h3>Special academic achievements</h3>'+
   ['JEE Mains','JEE Advanced','NEET','GATE','CAT','Olympiad','Other'].map(a=>`<label><input type="checkbox" class="ach" value="${a}"> ${a}</label><br>`).join('')+'<div id="othbox" style="display:none"><input id="othach" type="text" placeholder="Other achievements (you can list several, separated by commas)"></div>'+
-  '<h3>Declaration</h3><small class="msg" id="m_agree"></small><label><input type="checkbox" id="agree"> The information provided by me is correct to the best of my knowledge. If at any point of time any information provided by me is found to be incorrect then I may be subjected to rejection of the applied loan.</label><br><button>Submit</button>';
+  '<h3>Declaration</h3><small class="msg" id="m_agree"></small><label><input type="checkbox" id="agree"> The information provided by me is correct to the best of my knowledge. If at any point of time any information provided by me is found to be incorrect then I may be subjected to rejection of the applied loan.</label><br><small class="msg" id="m_agreeT"></small><label><input type="checkbox" id="agreeT"> I have read and understood the <a href="#terms" onclick="return goTerms()">Terms and Conditions</a> and I agree to them.</label><br><button>Submit</button>';
 
  F.addEventListener('input',e=>{
   const t=e.target;
   if(t.dataset.r)check(t);
+  if(t.id=='agree'||t.id=='agreeT')$('m_'+t.id).textContent='';
   if(t.className=='ach'&&t.value=='Other')$('othbox').style.display=t.checked?'block':'none';
   if(t.id=='status'){
    $('stu').style.display=(t.value=='Student'||t.value=='Both')?'block':'none';
@@ -73,6 +74,8 @@ if($('applyForm')){
   F.querySelectorAll('[data-r]').forEach(el=>{if(el.offsetParent&&!check(el))ok=false});
   $('m_agree').textContent=$('agree').checked?'':'Please tick the declaration to continue';
   if(!$('agree').checked)ok=false;
+  $('m_agreeT').textContent=$('agreeT').checked?'':'Please read and accept the Terms and Conditions to continue';
+  if(!$('agreeT').checked)ok=false;
   if(!ok){alert('Please fix the highlighted fields.');return}
   const d={};
   F.querySelectorAll('[data-r]').forEach(el=>{
@@ -86,11 +89,13 @@ if($('applyForm')){
   const ach=[...F.querySelectorAll('.ach:checked')].map(c=>c.value).filter(v=>v!='Other');
   if(F.querySelector('.ach[value=Other]').checked)ach.push('Other ('+($('othach').value.split(',').map(x=>x.trim()).filter(Boolean).join('; ')||'not specified')+')');
   d['Achievements']=ach.join(', ')||'None';
+  d['Terms and Conditions accepted']='Yes';
   window.cur=d;
   $('sum').innerHTML=Object.entries(d).map(([k,v])=>`<p><b>${esc(k)}:</b> ${esc(v)}</p>`).join('');
   $('modal').style.display='block';
  };
 }
+function goTerms(){show('about');const t=$('terms');if(t)t.scrollIntoView();return false}
 function closeM(){$('modal').style.display='none'}
 function finalSubmit(){const bad=dup(window.cur);if(bad){alert(bad);return}save('ascend_applicant',window.cur);location.href='loan.html'}
 
